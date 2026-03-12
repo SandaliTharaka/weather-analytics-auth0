@@ -42,6 +42,7 @@ const Navbar: React.FC = () => {
           </button>
 
           <button
+            className="user-button"
             onClick={() => setShowUserMenu(!showUserMenu)}
             disabled={isLoading}
           >
