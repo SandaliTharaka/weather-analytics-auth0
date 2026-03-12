@@ -12,4 +12,4 @@ function calculateComfortIndex(temp, humidity, windSpeed, cloudiness) {
   return Math.min(100, Math.max(0, score));
 }
 
-module.exports = { calculateComfortIndex };
+module.exports = { calculateComfortIndex };//

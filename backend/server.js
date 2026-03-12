@@ -57,6 +57,7 @@ app.get("/weather", async (req, res) => {
 
   res.json(results);
 });
+// Endpoint to check cache status
 app.get("/cache-status", (req, res) => {
 
   const cachedData = cache.get("weatherData");

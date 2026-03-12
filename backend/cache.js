@@ -4,4 +4,4 @@ const cache = new NodeCache({
   stdTTL: 300 // 300 seconds = 5 minutes
 });
 
-module.exports = cache;
+module.exports = cache;//cache.js
