@@ -4,9 +4,10 @@ import "../styles/weatherCard.css";
 
 interface WeatherCardProps {
   weather: WeatherData;
+  onViewTrend?: (cityName: string) => void;
 }
 
-const WeatherCard: React.FC<WeatherCardProps> = ({ weather }) => {
+const WeatherCard: React.FC<WeatherCardProps> = ({ weather, onViewTrend }) => {
   const getComfortLevel = (score: number): string => {
     if (score >= 80) return "Excellent";
     if (score >= 60) return "Good";
@@ -76,6 +77,14 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weather }) => {
             </span>
           </div>
         </div>
+
+        <button
+          className="view-trend-btn"
+          onClick={() => onViewTrend?.(weather.city)}
+          title="View 7-day temperature trend"
+        >
+          📈 View Trend
+        </button>
       </div>
     </div>
   );

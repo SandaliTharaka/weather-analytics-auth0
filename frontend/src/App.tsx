@@ -1,38 +1,42 @@
 import React from "react";
 import "./styles/globals.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import { ThemeProvider } from "./context/ThemeContext";
+import LoginPage from "./components/LoginPage";
+import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 
-import { useAuth0 } from "@auth0/auth0-react";
+function AppContent() {
+  const { isAuthenticated, isLoading } = useAuth0();
 
-function App() {
-
-  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
-
-  if (!isAuthenticated) {
+  if (isLoading) {
     return (
-      <div style={{ textAlign: "center", marginTop: "100px" }}>
-        <h2>Weather Analytics Dashboard</h2>
-        <button onClick={() => loginWithRedirect()}>
-          Login
-        </button>
+      <div className="app-loading">
+        <div className="loader">
+          <div className="spinner"></div>
+          <p>Loading...</p>
+        </div>
       </div>
     );
   }
 
+  if (!isAuthenticated) {
+    return <LoginPage />;
+  }
+
   return (
-    <div>
-      <p>Welcome {user?.name}</p>
-
-      <button
-        onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.origin } })
-        }
-      >
-        Logout
-      </button>
-
-      return <Dashboard />;
+    <div className="app">
+      <Navbar />
+      <Dashboard />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

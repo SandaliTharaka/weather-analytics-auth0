@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import WeatherCard from "../components/WeatherCard";
+import GraphModal from "../components/GraphModal";
 import { WeatherData } from "../types";
+import { generateTemperatureTrend, TemperatureDataPoint } from "../utils/mockWeatherData";
 import "../styles/dashboard.css";
 
 type SortBy = "rank" | "temperature" | "comfort";
@@ -13,6 +15,8 @@ const Dashboard: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<SortBy>("rank");
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
+  const [selectedCityData, setSelectedCityData] = useState<TemperatureDataPoint[]>([]);
 
   useEffect(() => {
     fetchWeatherData();
@@ -57,6 +61,24 @@ const Dashboard: React.FC = () => {
 
     setFilteredData(filtered);
   }, [searchQuery, sortBy, weatherData]);
+
+  const handleViewTrend = (cityName: string) => {
+    const selectedWeather = weatherData.find((w) => w.city === cityName);
+    if (selectedWeather) {
+      const trendData = generateTemperatureTrend(
+        cityName,
+        selectedWeather.temperature,
+        selectedWeather.humidity
+      );
+      setSelectedCityData(trendData);
+      setSelectedCity(cityName);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setSelectedCity(null);
+    setSelectedCityData([]);
+  };
 
   return (
     <div className="dashboard">
@@ -121,10 +143,21 @@ const Dashboard: React.FC = () => {
 
         <div className="cards-grid">
           {filteredData.map((weather) => (
-            <WeatherCard key={weather.city} weather={weather} />
+            <WeatherCard
+              key={weather.city}
+              weather={weather}
+              onViewTrend={handleViewTrend}
+            />
           ))}
         </div>
       </main>
+
+      <GraphModal
+        isOpen={selectedCity !== null}
+        cityName={selectedCity || ""}
+        temperatureData={selectedCityData}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };

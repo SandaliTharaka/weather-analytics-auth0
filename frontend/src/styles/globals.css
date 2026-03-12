@@ -25,6 +25,27 @@
   --comfort-poor: #ef4444;
 }
 
+/* Dark Mode Theme */
+[data-theme="dark"] {
+  --primary-color: #60a5fa;
+  --secondary-color: #34d399;
+  --accent-color: #fbbf24;
+  --danger-color: #f87171;
+  --dark-bg: #0f172a;
+  --light-bg: #1e293b;
+  --card-bg: #334155;
+  --text-dark: #f1f5f9;
+  --text-light: #cbd5e1;
+  --border-color: #475569;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+
+  --comfort-excellent: #4ade80;
+  --comfort-good: #60a5fa;
+  --comfort-fair: #fcd34d;
+  --comfort-poor: #fb7185;
+}
+
 body {
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
@@ -33,6 +54,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--light-bg);
   color: var(--text-dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html,
@@ -82,6 +104,81 @@ h6 {
 p {
   line-height: 1.6;
   color: var(--text-light);
+}
+
+/* App Loading State */
+.app-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #0ea5e9 100%);
+}
+
+.loader {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loader .spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader p {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* App Layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--light-bg);
+  transition: background-color 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+}
+
+.theme-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: rotate(20deg);
+}
+
+.theme-toggle-btn:active {
+  transform: rotate(20deg) scale(0.95);
 }
 
 /* Utility Classes */

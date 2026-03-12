@@ -1,0 +1,153 @@
+.temperature-graph {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.graph-header {
+  text-align: center;
+}
+
+.graph-title {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.graph-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Custom Tooltip Styling */
+.custom-tooltip {
+  background-color: var(--light-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  box-shadow: var(--shadow);
+}
+
+.custom-tooltip .label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin: 0 0 0.25rem 0;
+  font-weight: 500;
+}
+
+.custom-tooltip .value {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Graph Container */
+.recharts-surface {
+  overflow: visible !important;
+}
+
+.recharts-default-tooltip {
+  background-color: var(--light-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px !important;
+}
+
+/* Statistics Section */
+.graph-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .temperature-graph {
+  background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .custom-tooltip {
+  background-color: #1e293b;
+  border-color: #475569;
+}
+
+[data-theme="dark"] .recharts-default-tooltip {
+  background-color: #1e293b !important;
+  border-color: #475569 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .temperature-graph {
+    padding: 1.5rem;
+  }
+
+  .graph-title {
+    font-size: 1.25rem;
+  }
+
+  .graph-stats {
+    gap: 2rem;
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .temperature-graph {
+    padding: 1rem;
+  }
+
+  .graph-title {
+    font-size: 1.1rem;
+  }
+
+  .graph-stats {
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .stat-item {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+}
