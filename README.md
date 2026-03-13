@@ -1,4 +1,4 @@
-# 🌦 Weather Analytics Dashboard
+#  Weather Analytics Dashboard
 
 A full-stack weather analytics application that retrieves weather data from the OpenWeatherMap API, computes a custom Comfort Index Score, and displays ranked city insights in a responsive dashboard.
 
@@ -14,8 +14,6 @@ A full-stack weather analytics application that retrieves weather data from the 
 - Secure authentication using Auth0
 - Search and sorting functionality
 - Weather analytics cards UI
-- Dark mode
-- Graphs (temperature trend per city)
 
 ---
 
@@ -50,8 +48,35 @@ Other
 git clone https://github.com/SandaliTharaka/weather-analytics-auth0.git
 
 ---
+## 2️⃣ Environment Variables
 
-## 2️⃣ Backend Setup
+This project uses environment variables for API keys and authentication configuration.
+
+### Backend (.env)
+
+Create a file in the backend folder:
+
+backend/.env
+
+Example:
+
+OPENWEATHER_API_KEY=your_openweather_api_key
+PORT=5000
+
+
+### Frontend (.env)
+
+Create a file in the frontend folder:
+
+frontend/.env
+
+Example:
+
+REACT_APP_AUTH0_DOMAIN=your-auth0-domain
+REACT_APP_AUTH0_CLIENT_ID=your-auth0-client-id
+REACT_APP_API_URL=http://localhost:5000
+
+## 3️⃣ Backend Setup
 
 cd backend
 npm install
@@ -62,24 +87,6 @@ http://localhost:5000
 
 ---
 
-## 2️⃣ᴮ Running Backend Tests
-
-To run the Comfort Index function unit tests:
-
-```bash
-cd backend
-npm test
-```
-
-**Test Coverage:**
-
-- 49 comprehensive unit tests
-- Tests cover: basic functionality, temperature/humidity/wind/cloudiness impact, edge cases, real-world scenarios, and calculation verification
-- All tests are currently passing ✅
-
-For more details about individual test cases, see `backend/comfortIndex.test.js`
-
----
 
 ## 3️⃣ Frontend Setup
 
@@ -107,6 +114,24 @@ Test user:
 
 Email: careers@fidenz.com  
 Password: Pass#fidenz
+
+---
+## Running Backend Tests
+
+To run the Comfort Index function unit tests:
+
+```bash
+cd backend
+npm test
+```
+
+**Test Coverage:**
+
+- 49 comprehensive unit tests
+- Tests cover: basic functionality, temperature/humidity/wind/cloudiness impact, edge cases, real-world scenarios, and calculation verification
+- All tests are currently passing ✅
+
+For more details about individual test cases, see `backend/comfortIndex.test.js`
 
 ---
 
@@ -162,7 +187,7 @@ Cities are sorted from **most comfortable to least comfortable**.
 
 ---
 
-# ⚡ Caching Design
+#  Caching Design
 
 To improve performance and reduce API requests:
 
@@ -197,10 +222,13 @@ This approach reduces:
 
 - Sorting and filtering cities
 - Responsive dashboard UI
+- Dark mode
+- Graphs (temperature trend per city)
+- Unit tests for the Comfort Index function
 
 ---
 
-# 📚 References
+#  References
 
 OpenWeatherMap API  
 https://openweathermap.org/api
