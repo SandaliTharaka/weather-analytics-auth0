@@ -4,7 +4,7 @@ A full-stack weather analytics application that retrieves weather data from the 
 
 ---
 
-# 🚀 Features
+# Features
 
 - Fetch real-time weather data from OpenWeatherMap
 - Custom Comfort Index Score calculation (0–100)
@@ -14,38 +14,45 @@ A full-stack weather analytics application that retrieves weather data from the 
 - Secure authentication using Auth0
 - Search and sorting functionality
 - Weather analytics cards UI
+- Dark mode
+- Graphs (temperature trend per city)
 
 ---
 
 # 🛠 Tech Stack
 
 Frontend
+
 - React + TypeScript
 - Auth0 authentication
 - Responsive UI
 
 Backend
+
 - Node.js
 - Express.js
 
 API
+
 - OpenWeatherMap API
 
 Other
+
 - Server-side caching
 - REST API architecture
-
 
 ---
 
 # ⚙️ Installation & Setup
 
 ## 1️⃣ Clone Repository
+
 git clone https://github.com/SandaliTharaka/weather-analytics-auth0.git
 
 ---
 
 ## 2️⃣ Backend Setup
+
 cd backend
 npm install
 node server.js
@@ -55,7 +62,27 @@ http://localhost:5000
 
 ---
 
+## 2️⃣ᴮ Running Backend Tests
+
+To run the Comfort Index function unit tests:
+
+```bash
+cd backend
+npm test
+```
+
+**Test Coverage:**
+
+- 49 comprehensive unit tests
+- Tests cover: basic functionality, temperature/humidity/wind/cloudiness impact, edge cases, real-world scenarios, and calculation verification
+- All tests are currently passing ✅
+
+For more details about individual test cases, see `backend/comfortIndex.test.js`
+
+---
+
 ## 3️⃣ Frontend Setup
+
 cd frontend
 npm install
 npm start
@@ -65,17 +92,21 @@ http://localhost:3000
 
 ---
 
-# 🔐 Authentication (Auth0)
+## 🔐Authentication (Auth0)
 
-Authentication is implemented using Auth0.
+The application uses Auth0 for secure authentication.
 
-Only authenticated users can access the weather analytics dashboard.
+Features implemented:
 
-Login flow:
+- Login / Logout using Auth0
+- Multi-Factor Authentication enabled
+- Public signups disabled
+- Access restricted to whitelisted users
 
-1. User clicks login
-2. Redirect to Auth0 login page
-3. After authentication user is redirected back to the dashboard
+Test user:
+
+Email: careers@fidenz.com  
+Password: Pass#fidenz
 
 ---
 
@@ -93,15 +124,16 @@ The following parameters were used:
 - Cloudiness
 
 ### Example Formula
+
 Comfort Score = 100
 
-[Temperature − 22] * 2
+[Temperature − 22] \* 2
 
-Humidity * 0.2
+Humidity \* 0.2
 
-WindSpeed * 1.5
+WindSpeed \* 1.5
 
-Cloudiness * 0.1
+Cloudiness \* 0.1
 
 ### Reasoning
 
