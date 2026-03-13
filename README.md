@@ -54,29 +54,30 @@ This project uses environment variables for API keys and authentication configur
 
 ### Backend (.env)
 
-Create a file in the backend folder:
+Create a file in the `backend` folder named `.env`:
+Then update the values with your own:
 
-backend/.env
-
-Example:
-
+```
 OPENWEATHER_API_KEY=your_openweather_api_key
 PORT=5000
+```
+See `backend/.env.example` for reference.
 
 
 ### Frontend (.env)
 
-Create a file in the frontend folder:
+Create a file in the `frontend` folder named `.env`:
+Then update the values with your own:
 
-frontend/.env
-
-Example:
-
+```
 REACT_APP_AUTH0_DOMAIN=your-auth0-domain
 REACT_APP_AUTH0_CLIENT_ID=your-auth0-client-id
 REACT_APP_API_URL=http://localhost:5000
+```
 
-## 3️⃣ Backend Setup
+See `frontend/.env.example` for reference.
+
+---
 
 cd backend
 npm install
